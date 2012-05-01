@@ -1,0 +1,239 @@
+<html>
+<head>
+    <title>Blarg</title>
+
+    <style>
+        .map {position:relative;}
+        .map>div {width: 32px; height: 32px; position: absolute;}
+        .dungeon .fill {background-color: #654;}
+        .dungeon .open {background-color: #a97;}
+        .dungeon .open.topShadow {border-top: 5px solid #876; height: 27px;}
+        .dungeon .open.leftShadow {border-left: 5px solid #876; width: 27px;}
+        
+        .guy {width:32px; height: 32px;}
+        .guy .hitPointsBar {position:absolute; left: 1px; top: 30px; width: 30px; height: 6px; background-color: #500;}
+        .guy .hitPoints {position:absolute; left: 0px; top: 0px; height: 6px; background-color: #c00; }
+        .dude { background-image: url(http://www.eldacur.com/~brons/NerdCorner/8BitGIFs/Puck.gif);}
+        .cat { background-image: url(http://actualdownload.com/pictures/icon/icon-extractor-2000-7628.gif);}
+        .rat { background-image: url(http://icons.iconarchive.com/icons/pino/disney/32/Mickey-Mouse-2-icon.png)}
+    </style>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script> 
+      
+    <script language="javascript">
+
+
+
+        function cloneProps(from, to) {
+            for (var p in from) {
+                to[p] = from[p];
+            }
+        }
+
+        var mapobj = {
+            width: 24,
+            height: 20,
+            walkable: [
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+                0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+                0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+                0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
+                0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                ],
+            guys: [],
+            i: function (x, y) { return this.walkable[(y+1) * (this.width+2) + (x+1)]; }
+        };
+
+
+
+        function Guy(obj) {
+
+            cloneProps(obj, this);
+
+            this.div = $("<div><div class='hitPointsBar'><div class='hitPoints'></div></div></div>");
+            this.div.addClass('guy');
+            this.div.addClass(this.class);
+
+            this.update = function() {
+                //health
+                this.div.find(".hitPoints").css('width', "" + Math.round(100 * this.hitPoints / this.maxHitPoints) + "%");
+                //position
+                this.div.css('left', this.x * 32);
+                this.div.css('top', this.y * 32);
+            }
+
+            this.damage = function (d) {
+                this.hitPoints -= d;
+                if (this.hitPoints <= 0) {
+                    this.map.removeGuy(this);
+                }
+                else {
+                    this.update();
+                }
+            }
+
+            this.move = function (dx, dy) {
+                var newx = this.x + dx;
+                var newy = this.y + dy;
+                if (this.map.i(newx, newy) == 1) {
+                    //we might be able to move, let's see if there's a guy there
+                    var guys = this.map.guysAt(newx, newy);
+                    if (guys.length == 0) {
+                        this.x = newx;
+                        this.y = newy;
+                        this.update();
+                    }
+                    else {
+                        for (var k in guys) {
+                            guys[k].damage(1);
+                        }
+                    }
+                }
+            }
+
+            return this;
+        }
+
+        var int_to_class = ["fill", "open"];
+
+        function Map(obj, selector) {
+
+            cloneProps(obj, this);
+
+            this.selector = selector
+            this.container = $(selector);
+
+            this.addGuy = function (guy) {
+                this.container.append(guy.div);
+                this.guys.push(guy);
+                guy.map = this;
+                guy.update();
+            }
+
+            this.removeGuy = function (guy) {
+                for (var k in this.guys) {
+                    if (this.guys[k] == guy) {
+                        this.guys[k].div.remove();
+                        delete this.guys[k];
+                    }
+                }
+            }
+
+            this.guysAt = function (x, y) {
+                var foundguys = [];
+
+                for (var k in this.guys) {
+                    var g = this.guys[k];
+                    if (g.x == x && g.y == y) {
+                        foundguys.push(g);
+                    }
+                }
+
+                return foundguys;
+            }
+
+            this.generateMap = function () {
+                var x, y;
+
+                for (y = 0; y < this.height; y++) {
+                    for (x = 0; x < this.width; x++) {
+                        var div = $("<div/>");
+                        div.addClass(int_to_class[this.i(x, y)]);
+                        div.css('left', x * 32);
+                        div.css('top', y * 32);
+
+                        if (this.i(x, y) == 1) {
+                            if (this.i(x - 1, y) == 0) {
+                                div.addClass("leftShadow");
+                            }
+                            if (this.i(x, y - 1) == 0) {
+                                div.addClass("topShadow");
+                            }
+                        }
+
+                        this.container.append(div);
+                    }
+                }
+            }
+
+            this.generateMap();
+            
+            return this;
+        }
+
+        var dudeobj = {
+            class: "dude",
+            x: 1, y: 1,
+            maxHitPoints: 10,
+            hitPoints: 10
+        };
+
+        var ratobj = {
+            class: "rat",
+            x: 2, y: 2,
+            maxHitPoints: 4,
+            hitPoints: 4
+        };
+        
+        function init() {
+            var m = new Map(mapobj, ".dungeon");
+            var dude = new Guy(dudeobj);
+            var rat1 = new Guy(ratobj);
+            var rat2 = new Guy(ratobj);
+            var rat3 = new Guy(ratobj);
+            var rat4 = new Guy(ratobj);
+
+
+            rat2.x = 18;
+            rat2.y = 14;
+            rat3.x = 10;
+            rat3.y = 7;
+            rat4.x = 4;
+            rat4.y = 14;
+
+            m.addGuy(dude);
+            m.addGuy(rat1);
+            m.addGuy(rat2);
+            m.addGuy(rat3);
+            m.addGuy(rat4);
+
+            $(window).keydown(function (event) {
+                switch (event.keyCode) {
+                    case 37: dude.move(-1, 0); break;
+                    case 38: dude.move(0, -1); break;
+                    case 39: dude.move(1, 0); break;
+                    case 40: dude.move(0, 1); break;
+
+                }
+            });
+        }
+        
+        $(document).ready(init);
+
+
+    </script>
+</head>
+<body>
+    <div class="map dungeon">
+        
+    </div>    
+</body>
+
+</html>

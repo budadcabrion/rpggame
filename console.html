@@ -1,0 +1,112 @@
+<html>
+
+<head>
+    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+
+
+    <script language="javascript" src="js/language-enhancements.js"></script>  
+    <script language="javascript" src="js/rpg.js"></script>
+    <script language="javascript" src="js/types.js"></script>
+    <script language="javascript" src="js/map.js"></script>
+    <script language="javascript" src="js/rpg.js"></script>
+    <script language="javascript" src="js/data.js"></script>
+    <script language="javascript" src="js/ui.js"></script>
+    <script language="javascript" src="js/player.js"></script>
+    <script language="javascript" src="js/main.js"></script>
+    
+    <script>
+    
+        RpgMain();
+        
+        function resize()
+        {
+            $(".mapview").width( parseInt($("body").width()) - 250);
+            $(".mapview").x = 250;
+            
+            $(".log").height($(".mapview").height() - 300);
+            //$(".playerview").x = $(".mapview").width();
+        }
+        
+        $(document).ready(resize);
+        $(window).resize(resize);
+    
+    </script>
+    
+    <style>
+        body {margin: 0; padding: 0; position:relative; background-color: #666;}
+        .mapview {position:absolute; overflow: hidden; height: 100%; }
+        .mapview .hitPointsBar {width: 32px; height: 16px; position:absolute; left: 0px; top: 32px; background-color: #801;} 
+        .mapview .hitPoints {width: 30px; height: 14px; font-size: 12px; position:absolute; left: 1px; top: 33px; background-color: #e02; color: #fff;}
+
+        
+        .playerview { 250px; height: 280px; position: absolute; background-color: #eef;}
+        .playerview label {clear:both; display:block; color: #333; font: bold 11px sans-serif; text-transform: uppercase;}
+        .playerview label .money {display: inline;}
+        .playerview .item {width: 32px; height: 32px; float:left;}      
+        .playerview .moneyBar {height: 16px; background-size: 16px; }
+        
+        .log { top: 290px; position:absolute; color: #333; background-color: #fff; font: 11px sans-serif; overflow: scroll;}      
+        
+        .playerview, .log {width: 240px; padding: 4px; border: 1px solid #ccc;}
+        
+        
+        .map {position:relative; }
+        
+        .map .tile { width: 32.5px; height: 32.5px; position:absolute; background-repeat: no-repeat; }
+        .map .mapThing {position:absolute; width: 32px; height: 32px;}
+        
+        
+        .dude { background-image: url(images/dude.png); }
+        .cat {background-image: url(images/cat.gif); }
+        .rat { background-image: url(images/rat.gif); }
+        .tiger { background-image: url(http://www.baanboard.com/baanboard/images/avatars/CalvinHobbes_-_Hobbes_1.gif); }
+        .coin {background-image: url(images/coin.png); }
+        .leather.armor { background-image: url(images/leatherarmor.png); }
+        .plate.armor {background-image: url(images/platearmor.gif); }
+        .tshirt.armor {background-image: url(images/t-shirt.png); }
+        .dagger {background-image: url(images/dagger.gif); }
+        .sword {background-image: url(images/sword.png); }
+        .apple {background-image: url(http://icons.iconarchive.com/icons/aha-soft/food/32/apple-icon.png); }
+        .fist {background-image: url(images/fist.gif); }
+        
+       
+        
+        .dungeon .tunnel {background-color: #a99;}
+        .dungeon .stone {background-color: #530;}  
+        
+        .house .wall { background-image: url(http://www.playclockwiser.com/picture/bricks.png); }
+        .house .floor { background-image: url(http://th592.photobucket.com/albums/tt9/Steve_Alpha/th_WoodTile32x32.png); }
+        .house .door { background-image: url(http://www.ohshitzombies.com/ZedZed/trunk/ZedZed/data/images/door.png); }
+        
+        .ladder {background-image: url(http://mazeguy.net/bigicons/ladder.gif); }         
+        .grass {background-color: #4c1; }
+        .tree { background-image: url(images/tree.gif); }
+        .castle {background-image: url(images/castle.gif); }
+        .river {background-color: #106;}
+        .dirt {background-color: #742; }
+        .boulder {background-image: url(images/boulder.png);}
+        .bridge {background-image: url(http://th592.photobucket.com/albums/tt9/Steve_Alpha/th_WoodTile32x32.png); }
+        .hut {background-image: url(http://icons.iconarchive.com/icons/calle/native-american-houses/32/Caddo-House-icon.png); }
+        
+                                                                                                             
+    </style>
+</head>
+
+
+
+<body>
+    <div class="mapview">
+        <div class="map">
+        
+        </div>    
+    </div>
+    
+    <div class="playerview">
+        
+    </div>
+    
+    <div class="log">
+        
+    </div>
+</body>
