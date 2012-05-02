@@ -21,10 +21,11 @@
         
         function resize()
         {
-            var h = parseInt($("body").height());
-            var w = parseInt($("body").width());
+            var h = parseInt($(window).height());
+            var w = parseInt($(window).width());
             var y = h - 180;
-            $(".mapview").height( y );
+            $(".mapview").width("100%")
+            $(".mapview").height( y + "px" );
             $(".playerview").y = y;
             $(".console").y = y;
             $(".console").width( w - 310);
@@ -39,7 +40,7 @@
     <style>
         * { font-family: Arial, sans-serif; }
         body {margin: 0; padding: 0; position:relative; background-color: #666;}
-        .mapview {position:absolute; overflow: hidden; height: 100%; }
+        .mapview {position:absolute; overflow: hidden; }
         .mapview .hitPointsBar {width: 32px; height: 16px; position:absolute; left: 0px; top: 32px; background-color: #800;} 
         .mapview .hitPoints {width: 30px; height: 14px; font-size: 10px; position:absolute; left: 1px; top: 33px; background-color: #e02; color: #fff; }
 
@@ -80,8 +81,8 @@
         .console .log .message {color: #ccc;}
         .console .log .danger {color: #f44; }
         .console .log .hurray {color: Cyan; }
-        .console .log .input {color: Green; }
-        .console .input-container {height: 20px; font-size: 16px; width: 100%; border:0px; background: transparent; color: Green;}
+        .console .log .input {color: rgb(120, 200, 34); }
+        .console .input-container {height: 20px; font-weight:bold; font-size: 18px; width: 100%; border:0px; background: transparent; color: rgb(120, 200, 34);}
         
         .map {position:relative; }
         
