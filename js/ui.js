@@ -106,6 +106,7 @@ ConsoleView.prototype.TypeChar = function(charCode) {this.input.html("" + this.i
 
 ConsoleView.prototype.GetCommand = function() {return this.input.html();}
 
+ConsoleView.prototype.ClearCommand = function() {this.input.html("");}
 
 
 function PlayerController(obj) {
@@ -123,18 +124,23 @@ PlayerController.prototype.Play = function() {
             return;
         }          
         
-        if (event.which >= 48 && event.which <= 90)
+        if ((event.which >= 48 && event.which <= 90) || event.which == 32)
         {
             this.consoleview.TypeChar(event.which);
             event.preventDefault();
             return;
         }
         switch (event.keyCode) {
-            case 37: player.AttemptMove(-1, 0); event.preventDefault(); break;
-            case 38: player.AttemptMove(0, -1); event.preventDefault(); break;
-            case 39: player.AttemptMove(1, 0); event.preventDefault(); break;
-            case 40: player.AttemptMove(0, 1); event.preventDefault(); break;
+            case 37: this.RunCommand("move left"); event.preventDefault(); break;
+            case 38: this.RunCommand("move up"); event.preventDefault(); break;
+            case 39: this.RunCommand("move right"); event.preventDefault(); break;
+            case 40: this.RunCommand("move down"); event.preventDefault(); break;
             
+            case 13: /* enter */ 
+                this.RunCommand(this.consoleview.GetCommand());   
+                this.consoleview.ClearCommand();
+                event.preventDefault();
+                break;
             case 8: /* backspace */ this.consoleview.BackSpace(); event.preventDefault(); return; break;
             
             default: return;
@@ -165,7 +171,35 @@ PlayerController.prototype.Play = function() {
     });
 }
 
-PlayerController.RunCommand = function(str)
-{
-
+PlayerController.prototype.RunCommand = function(str) {
+    var dirs = {
+        "left": {x: -1, y: 0},
+        "right": {x: 1, y: 0},
+        "up": {x: 0, y: -1},
+        "down": {x: 0, y: 1}
+    }
+    
+    tokens = str.split(" ").filter(function(e) { return e != "" });
+    
+    var valid = false;
+    
+    switch (tokens[0])
+    {
+        case "move":
+            d = dirs[tokens[1]];
+            if (d) { 
+                player.AttemptMove(d.x, d.y);
+                valid = true;
+            }
+            break;
+    }
+    
+    if (valid)
+    {
+        if (tokens[0] != "move") this.consoleview.Log(INPUT, ">" + str);
+    }
+    else
+    {
+        this.consoleview.Log(DANGER, ">not recognized: " + str)
+    }
 }
