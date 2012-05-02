@@ -57,7 +57,10 @@ PlayerView.prototype.Update = function() {
     this.div.find("div.hitpoints-meter").html("" + this.player.hitPoints + "/" + this.player.maxHitPoints);
     
     this.div.find("div.holding > .item").attr("class", "inventory item holding " + this.player.weapon.css ); 
-    this.div.find("div.wearing > .item").attr("class", "inventory item wearing " + this.player.armor.css  );
+    this.div.find("div.holding > .item").attr("title", this.player.weapon.name ); 
+    
+    this.div.find("div.wearing > .item").attr("class", "inventory item wearing " + this.player.armor.css  ); 
+    this.div.find("div.wearing > .item").attr("title", this.player.armor.name ); 
     
     this.div.find("div.money > label > .money").html(this.player.money);       
     var coins = this.player.money;       
@@ -74,6 +77,7 @@ PlayerView.prototype.Update = function() {
         var div = $(DIV);
         var item = this.player.items[k];
         div.attr("class", "inventory item " + item.css );
+        div.attr("title", item.name)
         itemsdiv.append(div);
         div.id = parseInt(k) + 1;
         
