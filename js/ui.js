@@ -1,4 +1,3 @@
-//somethin somethin
 
 function MapView(obj) {
     copyProps(this, obj);
@@ -49,40 +48,26 @@ MapView.prototype.Render = function() {
 
 function PlayerView(obj) {
     copyProps(this, obj);
-    this.Render();
-}
-
-PlayerView.prototype.Render = function() {
-    this.div.empty();
-    
-    this.div.append("<label class='hitpoints'>hit points: </label><div class='hitpoints-bar'><div class='hitpoints' style='width:100%;'></div></div>");
-    this.div.append("<label class='holding'>holding: </label><div class='inventory item holding'></div>");
-    this.div.append("<label class='wearing'>wearing: </label><div class='inventory item wearing'></div>");
-    
-    this.div.append("<label for='money'>doolars: <div class='money'></div></div>");
-    this.div.append("<div class='coin moneyBar'></div>");  
-         
-    this.div.append("<label class='items'>items: </label><div class='inventory items'></div>");
-    
-    
     this.Update();
-    
 }
 
 PlayerView.prototype.Update = function() {
     
-    this.div.find("div.hitpoints").css("width", "" + Math.floor(100*this.player.hitPoints/this.player.maxHitPoints) + "%" ); 
-    this.div.find("div.hitpoints").html("" + this.player.hitPoints + "/" + this.player.maxHitPoints);
+    this.div.find("div.hitpoints-meter").css("width", "" + Math.floor(100*this.player.hitPoints/this.player.maxHitPoints) + "%" ); 
+    this.div.find("div.hitpoints-meter").html("" + this.player.hitPoints + "/" + this.player.maxHitPoints);
     
-    this.div.find("div.holding").attr("class", "inventory item holding " + this.player.weapon.css ); 
-    this.div.find("div.wearing").attr("class", "inventory item wearing " + this.player.armor.css  );
+    this.div.find("div.holding > .item").attr("class", "inventory item holding " + this.player.weapon.css ); 
+    this.div.find("div.wearing > .item").attr("class", "inventory item wearing " + this.player.armor.css  );
     
-    this.div.find("div.money").html(this.player.money);       
+    this.div.find("div.money > label > .money").html(this.player.money);       
     var coins = this.player.money;       
     while (coins > 10) coins /= 10;
-    this.div.find("div.moneyBar").css("width", "" + (coins*16)+ "px");
+    var row1 = coins > 5 ? 5 : coins;
+    var row2 = coins < 5 ? 0 : (coins-5);
+    this.div.find("div.money > .row1").css("width", "" + (row1*16)+ "px"); 
+    this.div.find("div.money > .row2").css("width", "" + (row2*16)+ "px");
 
-    itemsdiv = this.div.find("div.items");
+    itemsdiv = this.div.find("div.items > .item-container");
     itemsdiv.empty();
     for (var k in this.player.items)
     {
@@ -94,32 +79,68 @@ PlayerView.prototype.Update = function() {
 
 }
 
+function ConsoleView(obj) {
+    copyProps(this, obj);
+    
+    this.log = this.div.find(".log");
+    this.input = this.div.find(".input");
+}
+
+var MESSAGE = "message";
+var INPUT = "input";
+var DANGER = "danger";
+var HURRAY = "hurray"
+
+ConsoleView.prototype.Log = function(type, message) {
+    this.log.append("<div class='" + type + "'>" + message + "</div>");
+    this.log.scrollToBottom();   
+}
+         
+ConsoleView.prototype.BackSpace = function(charCode)
+{
+    var h = this.input.html();
+    this.input.html(h.substring(0, h.length -1));
+}
+
+ConsoleView.prototype.TypeChar = function(charCode) {this.input.html("" + this.input.html() + String.fromCharCode(charCode).toLowerCase() ); }
+
+ConsoleView.prototype.GetCommand = function() {return this.input.html();}
+
+
+
 function PlayerController(obj) {
     copyProps(this, obj);
 }
 
 PlayerController.prototype.Play = function() { 
     
-    var player = this.player;
-    var mapview = this.mapview; 
     this.mapview.CenterOnTile(this.player.x, this.player.y);
     
-    $(window).keydown(function(event){
-        
-        if (player.hitPoints <= 0) 
+    $(window).keydown(jQuery.proxy(function(event){
+                
+        if (this.player.hitPoints <= 0) 
         {
             return;
-        }
+        }          
         
+        if (event.which >= 48 && event.which <= 90)
+        {
+            this.consoleview.TypeChar(event.which);
+            event.preventDefault();
+            return;
+        }
         switch (event.keyCode) {
-            case 37: player.AttemptMove(-1, 0); break;
-            case 38: player.AttemptMove(0, -1); break;
-            case 39: player.AttemptMove(1, 0); break;
-            case 40: player.AttemptMove(0, 1); break;
+            case 37: player.AttemptMove(-1, 0); event.preventDefault(); break;
+            case 38: player.AttemptMove(0, -1); event.preventDefault(); break;
+            case 39: player.AttemptMove(1, 0); event.preventDefault(); break;
+            case 40: player.AttemptMove(0, 1); event.preventDefault(); break;
+            
+            case 8: /* backspace */ this.consoleview.BackSpace(); event.preventDefault(); return; break;
+            
             default: return;
         }
         
-        mapview.map.Turn();
+        this.mapview.map.Turn();
         
         if (player.hitPoints <= 0)
         {
@@ -133,11 +154,18 @@ PlayerController.prototype.Play = function() {
             this.mapview.CenterOnTile(player.x, player.y);
         }
         
-        mapview.CenterOnTile(player.x, player.y);
-        playerview.Update();
-    });         
+        this.mapview.CenterOnTile(player.x, player.y);
+        this.playerview.Update();
+        
+        
+    }, this) );         
 
     $(window).resize(function(event){
         mapview.CenterOnTile(player.x, player.y);
     });
+}
+
+PlayerController.RunCommand = function(str)
+{
+
 }

@@ -131,6 +131,7 @@ Map.prototype.AddVariations = function(mapdiv) {
     //this one i made for choosing out of a tileset - the html has a background 
     //image that gets moved around to point at the different tiles
     
+    /*
     divs.each(function(){
         div = $(this);
         div.removeClass("randvar4");
@@ -144,29 +145,25 @@ Map.prototype.AddVariations = function(mapdiv) {
         div.css("background-position-x", imgx.toString() + "px"); 
         div.css("background-position-y", imgy.toString() + "px");
     });
-    
+    */
     
     ///this one varies the colors in steps
-    /*
+    
     divs.each(function(){
         var div = $(this);
         var color = new ColorFromRgb(div.css('background-color'));
         
         
-        var r = Math.randint(-4, 4) / 4;
+        var r = Math.random();
         var ratio = r * 0.1 + 1;
         
         
         color.r = Math.round(color.r * ratio);  
         color.g = Math.round(color.g * ratio);
         color.b = Math.round(color.b * ratio);
-                        
-        //color.r = Math.cap(color.r + Math.randint(-color.r/30, color.r/30), 0, 255);
-        //color.g = Math.cap(color.g + Math.randint(-color.g/30, color.g/30), 0, 255);
-        //color.b = Math.cap(color.b + Math.randint(-color.b/30, color.b/30), 0, 255);
-        
+                                
         div.css('background-color', color.toString());
     });
-    */
+    
 }
 

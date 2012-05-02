@@ -21,11 +21,14 @@
         
         function resize()
         {
-            $(".mapview").width( parseInt($("body").width()) - 250);
-            $(".mapview").x = 250;
+            var h = parseInt($("body").height());
+            var w = parseInt($("body").width());
+            var y = h - 180;
+            $(".mapview").height( y );
+            $(".playerview").y = y;
+            $(".console").y = y;
+            $(".console").width( w - 310);
             
-            $(".log").height($(".mapview").height() - 300);
-            //$(".playerview").x = $(".mapview").width();
         }
         
         $(document).ready(resize);
@@ -34,22 +37,51 @@
     </script>
     
     <style>
+        * { font-family: Arial, sans-serif; }
         body {margin: 0; padding: 0; position:relative; background-color: #666;}
         .mapview {position:absolute; overflow: hidden; height: 100%; }
-        .mapview .hitPointsBar {width: 32px; height: 16px; position:absolute; left: 0px; top: 32px; background-color: #801;} 
-        .mapview .hitPoints {width: 30px; height: 14px; font-size: 12px; position:absolute; left: 1px; top: 33px; background-color: #e02; color: #fff;}
+        .mapview .hitPointsBar {width: 32px; height: 16px; position:absolute; left: 0px; top: 32px; background-color: #800;} 
+        .mapview .hitPoints {width: 30px; height: 14px; font-size: 10px; position:absolute; left: 1px; top: 33px; background-color: #e02; color: #fff; }
+
+               
+        .playerview, .console { padding: 5px; position: absolute; background-color: #eef;}
 
         
-        .playerview { 250px; height: 280px; position: absolute; background-color: #eef;}
+        .playerview { width: 290px; height: 170px;  }
+        .playerview>div {float:left; width: 64px; height: 50px;}
+        .playerview>div>label {color:#333; display:block; font-size: 10px; }
+        .playerview>div>.item {width:32px; height:32px; }
+        
+        .playerview>.portrait {height: 40px; float:none; width: 100%;}
+        .playerview>.portrait>img {width: 32px; height: 32px; padding: 1px; border: 2px solid #CCC; float:left; background-color:transparent; margin-right: 5px;}
+        .playerview>.portrait>label {font-size:20px;}
+        .playerview>.hitpoints {}
+        .playerview>.hitpoints .hitpoints-bar {height: 25px; width: 60px; background-color: #800; padding: 1px;} 
+        .playerview>.hitpoints .hitpoints-meter {height: 25px; background-color: #e02; color:White;}
+        .playerview>.holding{}
+        .playerview>.wearing{}
+        .playerview>.money{ width: 80px;}
+        .playerview>.money>.coinrow{height: 16px; background-size: 16px;}
+        .playerview>.items{width:100%; height: 80px;}
+        .playerview>.items>.item-container {width:100%; height: 64px;}
+        .playerview>.items>.item-container>.item {width: 32px; height:32px; float:left;}
+        
+        /*
         .playerview label {clear:both; display:block; color: #333; font: bold 11px sans-serif; text-transform: uppercase;}
         .playerview label .money {display: inline;}
         .playerview .item {width: 32px; height: 32px; float:left;}      
         .playerview .moneyBar {height: 16px; background-size: 16px; }
+        .playerview div.hitPointsBar { background-color: #800; }
+        .playerView div.hitPoints { background-color: #e02; color: White; }
+        */
         
-        .log { top: 290px; position:absolute; color: #333; background-color: #fff; font: 11px sans-serif; overflow: scroll;}      
-        
-        .playerview, .log {width: 240px; padding: 4px; border: 1px solid #ccc;}
-        
+        .console { height: 170px; left: 300px;}
+        .console .log {height: 150px; width: 100%; font-size: 12px; overflow-y: scroll; background-color: #333;}
+        .console .log .message {color: #ccc;}
+        .console .log .danger {color: #f44; }
+        .console .log .hurray {color: Cyan; }
+        .console .log .input {color: Green; }
+        .console .input-container {height: 20px; font-size: 16px; width: 100%; border:0px; background: transparent; color: Green;}
         
         .map {position:relative; }
         
@@ -57,7 +89,7 @@
         .map .mapThing {position:absolute; width: 32px; height: 32px;}
         
         
-        .dude { background-image: url(images/dude.png); }
+        .dude { background-image: url(images/puck.gif); }
         .cat {background-image: url(images/cat.gif); }
         .rat { background-image: url(images/rat.gif); }
         .tiger { background-image: url(http://www.baanboard.com/baanboard/images/avatars/CalvinHobbes_-_Hobbes_1.gif); }
@@ -103,10 +135,39 @@
     </div>
     
     <div class="playerview">
-        
+        <div class="portrait">
+            <img src="images/puck.gif"/>
+            <label>OUR HERO</label>
+        </div>            
+        <div class="hitpoints">
+            <label>HEALTH</label>
+            <div class="hitpoints-bar">
+                <div class="hitpoints-meter"></div>
+            </div>
+        </div>
+        <div class="holding">
+            <label>HOLDING</label>
+            <div class="item"></div>
+        </div> 
+        <div class="wearing">
+            <label>WEARING</label>
+            <div class="item"></div>
+        </div>  
+        <div class="money">
+            <label>DOOLARS: <span class="money">0</span></label>
+            <div class="coin coinrow row1"></div>
+            <div class="coin coinrow row2"></div>
+        </div>
+        <div class="items">
+            <label>ITEMS</label>
+            <div class="item-container"></div>
+        </div>         
     </div>
     
-    <div class="log">
-        
+    <div class="console">
+        <div class="log"></div>
+        <div class="input-container">
+            ><span class="input"></span>
+        </div>    
     </div>
 </body>

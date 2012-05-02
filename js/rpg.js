@@ -118,7 +118,7 @@ Creature.prototype.Attack = function(thing) {
         var d = this.damagePoints();
     }
     
-    log (this.name + " " + verb + " " + thing.name + witha + " for " + d + " damage");
+    log (DANGER, this.name + " " + verb + " " + thing.name + witha + " for " + d + " damage");
     thing.Damage(d);
 };
 
@@ -130,14 +130,14 @@ Creature.prototype.Damage = function(damage){
     {
         damage = this.armor.modifyDamage(originaldamage);
         var diff = originaldamage - damage;
-        log (this.name + "'s' " + this.armor.name + " absorbs " + diff + " damage so you take " + damage + " damage");
+        log (DANGER, this.name + "'s' " + this.armor.name + " absorbs " + diff + " damage so you take " + damage + " damage");
     }    
     
     this.hitPoints -= damage;
     
     if (this.hitPoints <= 0)
     {     
-        log (this.name + " is dead.");
+        log (HURRAY, this.name + " is dead.");
         
         if (this.onDie)
         {
@@ -248,13 +248,3 @@ Item.prototype.HitBy = function(thing)
         thing.Update();
     }
 }
-
-function log(str)
-{
-    $(".log").append("<div>" + str + "</div>") ;
-    //children = $(".log").children();
-
-    $(".log").scrollToBottom();
-}   
-
-log.count = 0;

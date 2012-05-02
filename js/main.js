@@ -15,7 +15,7 @@ function RpgMain() {
         //the_little_hut_map.Add(player);
         //player.weapon = new Item( {itemType: itemTypes.sword} );
         //player.armor = new Item( {itemType: itemTypes.armor.plate} );
-        //player.money = 2;
+        player.money = 2;
         /*
                             
         player.weapon = new Item( {itemType: itemTypes.sword} );
@@ -26,7 +26,20 @@ function RpgMain() {
           */       
         mapview = new MapView( { map: player.map, mapdiv: $(".map"), viewdiv: $(".mapview") } );
         playerview = new PlayerView( { player: player, div: $(".playerview") } );
-        playercontroller = new PlayerController( { player: player, mapview: mapview, playerview: playerview  } );
+        consoleview = new ConsoleView( { div:$(".console") } );
+        
+        playercontroller = new PlayerController( { player: player, mapview: mapview, playerview: playerview, consoleview: consoleview  } );
+       
+        window.log = function(type, str){
+        
+            if (arguments.length == 1)
+            {
+                str = type;
+                type = MESSAGE;  
+            }
+            
+            consoleview.Log(type, str);
+        }
        
         playercontroller.Play();           
     });
