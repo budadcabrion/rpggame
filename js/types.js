@@ -91,7 +91,7 @@ itemTypes.armor.plate = {
 }
 
 itemTypes.armor.tshirt = {
-    name: "t-shirt",  
+    name: "t shirt",  
     css: "tshirt armor",
     is: {armor: true},
     modifyDamage: function(originaldamage) {

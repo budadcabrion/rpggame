@@ -254,7 +254,10 @@ PlayerController.prototype.RunCommand = function(str) {
         
     }     */
     
-    if (!valid) {
+    if (valid){
+        this.player.Update();
+    }
+    else {
         this.consoleview.Log(DANGER, validation_message)
     }
     
