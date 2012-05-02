@@ -75,6 +75,9 @@ PlayerView.prototype.Update = function() {
         var item = this.player.items[k];
         div.attr("class", "inventory item " + item.css );
         itemsdiv.append(div);
+        div.id = parseInt(k) + 1;
+        
+        div.click(function() { playercontroller.RunCommand("use item " + $(this).id); playerview.Update(); } );
     }
 
 }
@@ -187,8 +190,6 @@ PlayerController.prototype.RunCommand = function(str) {
         "down": {x: 0, y: 1}
     }
     
-    
-    
     tokens = str.split(" ").filter(function(e) { return e != "" });
     str = tokens.join(" ");    
         
@@ -226,7 +227,7 @@ PlayerController.prototype.RunCommand = function(str) {
         var index = this.player.FindItemByName(match[1]);
         
         if (index == -1) {
-            validation_message = "you do not have a " + match[1];
+            validation_message = "you do not have a " + match[1] + " in your items";
         }   
         else
         {
@@ -234,25 +235,6 @@ PlayerController.prototype.RunCommand = function(str) {
             valid = true;
         }
     }
-         /*
-    switch (tokens[0])
-    {
-        case "move":
-            if (tokens.length < 2) break;
-                           
-            d = dirs[tokens[1]];
-            if (d) { 
-                this.player.AttemptMove(d.x, d.y);
-                valid = true;
-            }
-            break;
-        case "use":
-            if (tokens[1] == "item")
-            {
-                
-            }
-        
-    }     */
     
     if (valid){
         this.player.Update();

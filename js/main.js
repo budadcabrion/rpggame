@@ -1,7 +1,7 @@
 function RpgMain() {
     $(document).ready(function () {
                
-        var player = new Player({
+        window.player = new Player({
             creatureType: creatureTypes.dude,
             x: 1,
             y: 1,
@@ -22,11 +22,11 @@ function RpgMain() {
         player.x = 24;
         player.y = 20;
           */       
-        mapview = new MapView( { map: player.map, mapdiv: $(".map"), viewdiv: $(".mapview") } );
-        playerview = new PlayerView( { player: player, div: $(".playerview") } );
-        consoleview = new ConsoleView( { div:$(".console") } );
+        window.mapview = new MapView( { map: player.map, mapdiv: $(".map"), viewdiv: $(".mapview") } );
+        window.playerview = new PlayerView( { player: player, div: $(".playerview") } );
+        window.consoleview = new ConsoleView( { div:$(".console") } );
         
-        playercontroller = new PlayerController( { player: player, mapview: mapview, playerview: playerview, consoleview: consoleview  } );
+        window.playercontroller = new PlayerController( { player: player, mapview: mapview, playerview: playerview, consoleview: consoleview  } );
        
         window.log = function(type, str){
         
@@ -38,9 +38,7 @@ function RpgMain() {
             
             consoleview.Log(type, str);
         }
-        
-        window.player = player;
-       
+               
         playercontroller.Play();           
     });
     

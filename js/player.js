@@ -42,7 +42,9 @@ Player.prototype.Hit = function(thing) {
         else
         {
             this.items.push(thing);
-            log ("you just picked up a " + thing.name);
+            
+            var verb = (thing.is.armor || thing.is.weapon) ? "equip" : "use";
+            log ("you just picked up a " + thing.name + " (type '<span class='input'>use " + thing.name + "</span>' to " + verb + " it or just click on it)");
         }
         
         this.map.Remove(thing);    
