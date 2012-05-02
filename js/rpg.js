@@ -1,20 +1,3 @@
-function Card() {
-
-    copyProps(this, this.default);
-
-    for (var o in params)
-    {
-        copyProps(this, o);
-    }
-    
-    for (var o in params)
-    {
-        if (o.constructor) {
-            o.constructor.apply(this);
-        }
-    }
-}
-
 function MapThing(obj) {    
     if (arguments.length == 0) return this;
     copyProps(this, obj);   
@@ -92,6 +75,13 @@ Creature.prototype.AttemptMove = function(dx, dy) {
                 },
                 40);
         }
+        //some kind of move happened
+        return true;
+    }
+    else
+    {
+        //nothing happened
+        return false;
     }
 };
     
@@ -213,38 +203,11 @@ function Item(obj) {
 }
 
 Item.inherits(MapThing);
-                            
-Item.prototype.HitBy = function(thing)
-{
-    if (thing instanceof Player)
+              
+Item.prototype.UseBy = function(thing) {
+    if (this.fullheal)
     {
-        if (this.fullheal)
-        {
-            thing.hitPoints = thing.maxHitPoints;             
-            log("you have been fully healed by a " + this.name);
-        }
-        if (this.is.weapon)
-        {
-            thing.weapon = this;              
-            log("you have armed yourself with a " + this.name);
-        }
-        if (this.is.armor)
-        {
-            thing.armor = this;
-            log("you have donned " + this.name);
-        }
-        if (this.is.money)
-        {
-            if (thing.money)
-                thing.money += this.value;
-            else
-                thing.money = this.value;
-                
-            log("you just picked up a " + this.name + ".  you now have " + thing.money + " doolars");
-        }
-        
-        this.map.Remove(this);
-        
-        thing.Update();
+        thing.hitPoints = thing.maxHitPoints;             
+        log(thing.name + " has been fully healed by a " + this.name);
     }
 }

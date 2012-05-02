@@ -178,3 +178,4 @@ function ColorFromRgb(rgb) {
 ColorFromRgb.prototype.toString = function() {
     return "rgb(" + this.r + ","  + this.g + "," + this.b + ")";
 }
+

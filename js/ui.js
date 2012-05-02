@@ -122,7 +122,9 @@ PlayerController.prototype.Play = function() {
         if (this.player.hitPoints <= 0) 
         {
             return;
-        }          
+        }      
+        
+        var turn = false;    
         
         if ((event.which >= 48 && event.which <= 90) || event.which == 32)
         {
@@ -131,13 +133,13 @@ PlayerController.prototype.Play = function() {
             return;
         }
         switch (event.keyCode) {
-            case 37: this.RunCommand("move left"); event.preventDefault(); break;
-            case 38: this.RunCommand("move up"); event.preventDefault(); break;
-            case 39: this.RunCommand("move right"); event.preventDefault(); break;
-            case 40: this.RunCommand("move down"); event.preventDefault(); break;
+            case 37: turn = this.RunCommand("move left"); event.preventDefault(); break;
+            case 38: turn = this.RunCommand("move up"); event.preventDefault(); break;
+            case 39: turn = this.RunCommand("move right"); event.preventDefault(); break;
+            case 40: turn = this.RunCommand("move down"); event.preventDefault(); break;
             
             case 13: /* enter */ 
-                this.RunCommand(this.consoleview.GetCommand());   
+                turn = this.RunCommand(this.consoleview.GetCommand());   
                 this.consoleview.ClearCommand();
                 event.preventDefault();
                 break;
@@ -146,32 +148,38 @@ PlayerController.prototype.Play = function() {
             default: return;
         }
         
-        this.mapview.map.Turn();
-        
-        if (player.hitPoints <= 0)
-        {
-            return;
-        }
-        
-        if (mapview.map != player.map)
-        {       
-            this.mapview.map = player.map;  
-            this.mapview.Render(); 
+        if (turn)
+        {          
+            this.mapview.map.Turn();
+            
+            if (player.hitPoints <= 0)
+            {
+                return;
+            }
+            
+            if (mapview.map != player.map)
+            {       
+                this.mapview.map = player.map;  
+                this.mapview.Render(); 
+                this.mapview.CenterOnTile(player.x, player.y);
+            }
+            
             this.mapview.CenterOnTile(player.x, player.y);
+            this.playerview.Update();
         }
-        
-        this.mapview.CenterOnTile(player.x, player.y);
-        this.playerview.Update();
         
         
     }, this) );         
 
-    $(window).resize(function(event){
-        mapview.CenterOnTile(player.x, player.y);
-    });
+    $(window).resize(jQuery.proxy(function(event){
+        mapview.CenterOnTile(this.player.x, this.player.y);
+    }, this) );
 }
 
 PlayerController.prototype.RunCommand = function(str) {
+    
+    this.consoleview.Log(INPUT, ">" + str);
+
     var dirs = {
         "left": {x: -1, y: 0},
         "right": {x: 1, y: 0},
@@ -179,27 +187,76 @@ PlayerController.prototype.RunCommand = function(str) {
         "down": {x: 0, y: 1}
     }
     
+    
+    
     tokens = str.split(" ").filter(function(e) { return e != "" });
-    
+    str = tokens.join(" ");    
+        
     var valid = false;
+    var validation_message = "command not recognized"
+    var match;
     
+    if (match = /^move (up|down|left|right)$/.exec(str))
+    {
+        var dir = match[1]; 
+        d = dirs[match[1]];     
+
+        if (this.player.AttemptMove(d.x, d.y)) {
+            valid = true;
+        }
+        else {
+            validation_message = "you can't move " + match[1];
+        }         
+    }
+    if (match = /^use item ([0-9]+)$/.exec(str))
+    {
+        var index = parseInt(match[1]) - 1;
+        
+        if (index >= this.player.items.length) {
+            validation_message = "you do not have that many items";
+        }
+        else
+        {
+            this.player.UseByIndex(index);
+            valid = true;
+        }        
+    }
+    if (match = /^use (.*)$/.exec(str))
+    {
+        var index = this.player.FindItemByName(match[1]);
+        
+        if (index == -1) {
+            validation_message = "you do not have a " + match[1];
+        }   
+        else
+        {
+            this.player.UseByIndex(index);
+            valid = true;
+        }
+    }
+         /*
     switch (tokens[0])
     {
         case "move":
+            if (tokens.length < 2) break;
+                           
             d = dirs[tokens[1]];
             if (d) { 
-                player.AttemptMove(d.x, d.y);
+                this.player.AttemptMove(d.x, d.y);
                 valid = true;
             }
             break;
+        case "use":
+            if (tokens[1] == "item")
+            {
+                
+            }
+        
+    }     */
+    
+    if (!valid) {
+        this.consoleview.Log(DANGER, validation_message)
     }
     
-    if (valid)
-    {
-        if (tokens[0] != "move") this.consoleview.Log(INPUT, ">" + str);
-    }
-    else
-    {
-        this.consoleview.Log(DANGER, ">not recognized: " + str)
-    }
+    return valid;
 }

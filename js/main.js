@@ -1,14 +1,12 @@
-      
-var player = new Player({
-    creatureType: creatureTypes.dude,
-    x: 1,
-    y: 1            
-});
-  
-
 function RpgMain() {
     $(document).ready(function () {
-        
+               
+        var player = new Player({
+            creatureType: creatureTypes.dude,
+            x: 1,
+            y: 1,
+            items: [ new Item(itemTypes.apple) ]          
+        });
     
         the_outside_map.Add(player);
         //the_dungeon_map.Add(player);
@@ -40,12 +38,10 @@ function RpgMain() {
             
             consoleview.Log(type, str);
         }
+        
+        window.player = player;
        
         playercontroller.Play();           
     });
     
 }
-
-
-//inventory
-//bow
