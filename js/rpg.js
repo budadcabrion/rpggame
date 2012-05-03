@@ -120,7 +120,7 @@ Creature.prototype.Damage = function(damage){
     {
         damage = this.armor.modifyDamage(originaldamage);
         var diff = originaldamage - damage;
-        log (DANGER, this.name + "'s' " + this.armor.name + " absorbs " + diff + " damage so you take " + damage + " damage");
+        log (DANGER, this.name + "'s' " + this.armor.name + " absorbs " + diff + " damage so " + this.name + " takes " + damage + " damage");
     }    
     
     this.hitPoints -= damage;
