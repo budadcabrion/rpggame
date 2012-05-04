@@ -57,6 +57,18 @@ Player.prototype.Hit = function(thing) {
         this.y = thing.targety;
         this.map.Add(this);
     }
+    else if (thing instanceof Door)
+    {
+        if (this.HasItem("key"))
+        {
+            log("you open the door using your key!"); 
+            this.map.Remove(thing);                   
+        }
+        else
+        {
+            log("you cannot open the door without a key");
+        }     
+    }
 }
 
 Player.prototype.UseByIndex = function(index) {
@@ -83,7 +95,9 @@ Player.prototype.UseByIndex = function(index) {
         item.UseBy(this);
         this.RemoveItemByIndex(index);
         return true;
-    }   
+    } 
+    
+    log("there is nothing to do with the " + item.name);
     return false;
 }
 
@@ -97,4 +111,8 @@ Player.prototype.FindItemByName = function(name) {
         if (this.items[i].name == name) return i; 
     }
     return -1;
+}
+
+Player.prototype.HasItem = function(name) {
+    return this.FindItemByName(name) != -1;
 }

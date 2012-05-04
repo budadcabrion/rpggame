@@ -3,9 +3,12 @@ var tilesets = {};
 tilesets.dungeon = {
     css: "dungeon",
     tiles: [
-        { css: "stone randvar4", solid: true },
+        { solid: false },
+        { css: "dirt randvar4", solid: true },  
+        { css: "stone", solid: true },           
+        { css: "stonebricks", solid: true },
         { css: "tunnel randvar4", solid: false } ,
-        { css: "tunnel ladder", solid: false }
+        { css: "tunnel ladder", solid: false },
     ]
 }; 
 
@@ -41,8 +44,17 @@ itemTypes.apple = {
     name: "apple",
     css: "apple",
     is: {food: true},
-    fullheal: true
+    UseBy: function(thing) {
+            thing.hitPoints = thing.maxHitPoints;             
+            log(thing.name + " has been fully healed by a " + this.name);
+    }
 } 
+
+itemTypes.key = {
+    name: "key",
+    css: "key",
+    is: {key: true},    
+}
 
 itemTypes.playerfist = {
     name: "fist",
@@ -111,7 +123,7 @@ var creatureTypes = {};
 creatureTypes.rat = {
     css: "rat",
     name: "rat",
-    maxHitPoints: function () { return Math.randint(1, 4); },
+    maxHitPoints: function () { return Math.randint(1, 3); },
     damagePoints: function() { return Math.randint(1, 2); },
     onDie: function() {  
         if (Math.random() < 0.5)
@@ -121,11 +133,18 @@ creatureTypes.rat = {
     }
 };
 
+creatureTypes.dog = {
+    css: "dog",
+    name: "wild dog",
+    maxHitPoints: function() { return Math.randint(3,5); },
+    damagePoints: function() { return Math.randint(2,4); }
+};
+
 creatureTypes.cat = {
     css: "cat", 
-    name: "cat",
-    maxHitPoints: function() { return Math.randint(3, 6); },
-    damagePoints: function() { return Math.randint(1, 4); } ,
+    name: "mountain cat",
+    maxHitPoints: function() { return Math.randint(4, 6); },
+    damagePoints: function() { return Math.randint(1, 3); } ,
     onDie: function() {
         this.map.Add( new Item( {itemType: itemTypes.apple, x: this.x, y: this.y} ) );
     }
@@ -136,8 +155,25 @@ creatureTypes.tiger = {
     name: "tiger",
     maxHitPoints: function() { return Math.randint(7, 12); },
     damagePoints: function() { return Math.randint(3, 6); } ,
-    onDie: function() {
+    /*onDie: function() {
         this.map.Add( new Item( {itemType: itemTypes.armor.plate, x: this.x, y: this.y} ) );
+    } */
+};
+
+creatureTypes.skeleton = {
+    css: "skeleton",
+    name: "skeleton",
+    maxHitPoints: function() { return Math.randint(3,5); },
+    damagePoints: function() { return Math.randint(3,5); }
+};   
+
+creatureTypes.evildude = {
+    css: "evildude", 
+    name: "evil dude",
+    maxHitPoints: function() { return 20; },
+    damagePoints: function() { return Math.randint(4, 8); } ,
+    onDie: function() {
+        log("you have defeated the evil dude!  you have won the game!");
     }
 };
 

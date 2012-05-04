@@ -68,12 +68,15 @@ Creature.prototype.AttemptMove = function(dx, dy) {
         {
             this.x = nx;
             this.y = ny;
-            //this.Update();
+            this.Update();
+            /*
             this.div.animate({ 
                 left: nx * this.map.gridSize, 
-                top: ny * this.map.gridSize 
+                top: ny * this.map.gridSize,
+                queue: false
                 },
                 40);
+                */
         }
         //some kind of move happened
         return true;
@@ -191,6 +194,13 @@ function MapTeleport(obj) {
 
 MapTeleport.inherits(MapThing);
 
+function Door(obj) {
+    copyProps(this, obj);
+    return this;
+}
+
+Door.inherits(MapThing);
+
 function Item(obj) {
     if (obj.itemType)
     {
@@ -203,11 +213,3 @@ function Item(obj) {
 }
 
 Item.inherits(MapThing);
-              
-Item.prototype.UseBy = function(thing) {
-    if (this.fullheal)
-    {
-        thing.hitPoints = thing.maxHitPoints;             
-        log(thing.name + " has been fully healed by a " + this.name);
-    }
-}

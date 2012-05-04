@@ -89,12 +89,15 @@ Map.prototype = {
     
     i: function(x, y) {
         if (x < 0 || x >= this.width || y < 0 || y >= this.height) 
-            return this.width * this.height;
+            return -1;
         return y * this.width + x;
     },
     
     IsSolid: function (x, y) {
         var i = this.i(x,y);
+        
+        if (i == -1) return true;
+        
         var step = this.width * this.height;
         
         while (i < this.tiles.length)

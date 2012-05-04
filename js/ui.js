@@ -122,7 +122,7 @@ function PlayerController(obj) {
 
 PlayerController.prototype.Play = function() { 
     
-    this.mapview.CenterOnTile(this.player.x, this.player.y);
+    this.mapview.CenterOnTile(player.x, player.y);
     
     $(window).keydown(jQuery.proxy(function(event){
                 
@@ -168,7 +168,6 @@ PlayerController.prototype.Play = function() {
             {       
                 this.mapview.map = player.map;  
                 this.mapview.Render(); 
-                this.mapview.CenterOnTile(player.x, player.y);
             }
             
             this.mapview.CenterOnTile(player.x, player.y);

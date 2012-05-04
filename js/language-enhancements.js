@@ -153,6 +153,8 @@ function copyProps(to, from) {
     for (var prop in from) {
         to[prop] = from[prop];
     }
+    
+    return to;
 }
 
 function fillProps(to, from) {
@@ -160,7 +162,9 @@ function fillProps(to, from) {
         if (!to[prop]) {
             to[prop] = from[prop];
         }
-    }   
+    }
+    
+    return to;   
 }
 
 

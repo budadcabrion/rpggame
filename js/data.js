@@ -1,131 +1,111 @@
 var the_dungeon_map = new Map({
     name: "in a dungeon...",
-    width: 26,
-    height: 22,
+    width: 30,
+    height: 50,
     gridSize: 32,
     tileset: tilesets.dungeon,
     tiles: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 2, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-        0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-        0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0,
-        0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0,
-        0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0,
-        0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0,
-        0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 2, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+        1, 2, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 4, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 2, 4, 4, 4, 4, 4, 2, 2, 1, 1, 1, 1, 2, 4, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 2, 2, 4, 4, 2, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 4, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+        1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1,
+        1, 1, 1, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1,
+        1, 1, 1, 2, 4, 2, 2, 2, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1,
+        1, 1, 1, 2, 4, 4, 4, 2, 1, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 4, 4, 3, 1, 1,
+        1, 1, 1, 1, 2, 2, 4, 2, 1, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1, 1, 1, 3, 4, 4, 3, 1, 1, 
+        1, 1, 1, 2, 4, 4, 4, 2, 1, 1, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 1, 1, 1, 1, 3, 4, 4, 3, 1, 1,
+        1, 1, 1, 2, 4, 2, 2, 1, 1, 1, 1, 3, 3, 3, 4, 3, 3, 3, 3, 1, 1, 1, 1, 1, 3, 4, 4, 3, 1, 1,
+        1, 1, 2, 4, 4, 2, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 4, 3, 1, 1,
+        1, 1, 2, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 4, 3, 1, 1,
+        1, 1, 2, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 3, 3, 3, 4, 4, 3, 3, 1, 
+        1, 1, 2, 4, 2, 2, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 3, 1,
+        1, 1, 2, 4, 4, 4, 2, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 3, 1,
+        1, 2, 4, 4, 4, 4, 2, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 3, 1,
+        1, 2, 4, 4, 4, 4, 2, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 3, 1,
+        1, 2, 4, 4, 4, 4, 4, 2, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 3, 1, 
+        1, 1, 2, 4, 4, 4, 2, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 3, 1,
+        1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 4, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 4, 4, 4, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         
-        0 //outside square
         ] ,
-    things: [  
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 18,
-            y: 10
-        }),   
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 18,
-            y: 12
-        }), 
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 19,
-            y: 14
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 4,
-            y: 4
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 6,
-            y: 8
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 9,
-            y: 17
-        }),
-        new Creature({
-            creatureType: creatureTypes.tiger,
-            x: 24,      
-            y: 18
-        }),   
+    things: [ 
+    /*
+        //by the ladder 
+        new Creature({ creatureType: creatureTypes.rat, x: 16, y: 14 }),   
+        new Creature({ creatureType: creatureTypes.rat, x: 16, y: 15 }), 
+        new Creature({ creatureType: creatureTypes.rat, x: 16, y: 16 }),
+        new Creature({ creatureType: creatureTypes.rat, x: 17, y: 16 }),
+        new Creature({ creatureType: creatureTypes.rat, x: 18, y: 16 }),
+         */
+        new Door( {x: 14, y:22, css: "door"}),
+         
+        //upper cavern
+        new Creature({ creatureType: creatureTypes.rat, x: 5, y: 5 }),
+        new Creature({ creatureType: creatureTypes.rat, x: 7, y: 6 }),                 
+        new Creature({ creatureType: creatureTypes.rat, x: 4, y: 8 }), 
+        new Creature({ creatureType: creatureTypes.rat, x: 9, y: 5 }),
+        new Creature({ creatureType: creatureTypes.rat, x: 12, y: 5 }),              
+        new Item( { x: 2, y: 6, itemType: itemTypes.sword }),              
+        new Item( { x: 2, y: 5, itemType: itemTypes.coin }),             
+        new Item( { x: 3, y: 4, itemType: itemTypes.coin }),
         
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 10,      
-            y: 20
-        }), 
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 11,      
-            y: 20
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 12,      
-            y: 20
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 13,      
-            y: 20
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 14,      
-            y: 20
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 15,      
-            y: 20
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 16,      
-            y: 20
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 17,      
-            y: 20
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 18,      
-            y: 20
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 19,      
-            y: 20
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 20,      
-            y: 20
-        }),              
-        new Item( {
-            x: 21, y: 14,
-            itemType: itemTypes.sword
-        }) 
+        //left cavern
+        new Creature( {x: 5, y: 28, creatureType: creatureTypes.tiger } ),
+        new Creature( {x: 3, y: 29, creatureType: creatureTypes.tiger } ),
+        new Item ( {x: 6, y:30, itemType: itemTypes.armor.plate} ),       
+        new Item ( {x: 5, y:31, itemType: itemTypes.apple} ), 
+    
+        //right room 
+        new Creature({ creatureType: creatureTypes.skeleton, x: 25, y: 30 }),   
+        new Creature({ creatureType: creatureTypes.skeleton, x: 23, y: 31 }), 
+        new Creature({ creatureType: creatureTypes.skeleton, x: 24, y: 31 }),
+        new Creature({ creatureType: creatureTypes.skeleton, x: 26, y: 31 }),
+        new Creature({ creatureType: creatureTypes.skeleton, x: 27, y: 31 }),
+        new Item( {x: 25, y:31, itemType: itemTypes.key} ), 
+         
+        //lower corridor 
+        new Creature({ creatureType: creatureTypes.rat, x: 14, y: 23 }),
+        new Creature({ creatureType: creatureTypes.rat, x: 14, y: 24 }),
+        new Creature({ creatureType: creatureTypes.rat, x: 14, y: 25 }),
+        new Creature({ creatureType: creatureTypes.rat, x: 14, y: 26 }),
+        new Creature({ creatureType: creatureTypes.cat, x: 14, y: 27 }),
+        new Creature({ creatureType: creatureTypes.skeleton, x: 14, y: 28 }),
+        new Creature({ creatureType: creatureTypes.skeleton, x: 14, y: 29 }),
+        new Creature({ creatureType: creatureTypes.tiger, x: 14, y: 30 }),  
+        new Door({ x: 14, y: 41, css: "door" }),
+        
+        new Creature({ creatureType: creatureTypes.evildude, x: 14, y: 45})  
+        
+        
     ]
 }); 
 
@@ -149,8 +129,8 @@ var the_dungeon_map = new Map({
 }
   */
   
-var the_little_hut_map = new Map({
-    name: "outside!",
+var generic_hut_map_object = {
+    name: "a little hut",
     width: 5,
     height: 5,
     gridSize: 32,
@@ -161,19 +141,25 @@ var the_little_hut_map = new Map({
         0, 1, 1, 1, 2,
         0, 1, 1, 1, 0,
         0, 0, 0, 0, 0,
-        0 //outside square
-        ]  ,
-    things: [
-        new Item( {
-            x: 1, y: 1,
-            itemType: itemTypes.dagger
-        }),        
-        new Item( {
-            x: 1, y: 3,
-            itemType: itemTypes.armor.leather
-        })
-    ]
-});
+        
+        ],
+    things: []
+};
+
+var hut1_map = new Map(fillProps( {
+        things: [new Item( {x:1, y:1, itemType: itemTypes.dagger})]
+    },
+    generic_hut_map_object
+)); 
+
+var hut2_map = new Map(fillProps( {
+        things: [ 
+            new Item( { x: 1, y: 1, itemType: itemTypes.apple }),        
+            new Item( { x: 1, y: 3, itemType: itemTypes.armor.leather })
+        ]
+    },
+    generic_hut_map_object
+));
 
 var the_outside_map = new Map({
     name: "outside!",
@@ -189,12 +175,12 @@ var the_outside_map = new Map({
         2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
         2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
         2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-        2, 2, 2, 2, 5, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-        2, 2, 2, 4, 5, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-        2, 2, 4, 4, 5, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4,
-        4, 4, 4, 4, 5, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4,
-        4, 4, 4, 4, 5, 3, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4,
-        4, 4, 4, 4, 3, 3, 3, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 2, 2, 2, 2,
+        2, 2, 2, 2, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 2, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+        2, 2, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4,
+        4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4,
+        4, 4, 4, 4, 4, 3, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4,
+        4, 4, 4, 4, 4, 3, 3, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 4, 4, 4, 2, 2, 2, 2,
         4, 4 ,4, 4, 3, 3, 3, 4, 4, 3, 3, 4, 4, 2, 2, 2, 2, 2, 2, 5, 5, 5, 2, 2, 2, 2,
         3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 4, 4, 4, 2, 2, 2, 2,
         3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 2, 2, 2, 2, 4, 4, 4, 4, 2, 2, 2, 2,
@@ -205,16 +191,16 @@ var the_outside_map = new Map({
         3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
         3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 
         
-        0, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0, 6, 0, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 6, 6,
-        0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 0, 6, 6, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6,
-        0, 0, 0, 0, 6, 0, 0, 6, 6, 6, 6, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 6, 6, 6, 6, 6,
-        0, 0, 0, 0, 6, 0, 6, 6, 6, 0, 0, 0, 6, 6, 6, 6, 0, 0, 6, 6, 6, 6, 6, 6, 6, 6,
-        0, 0, 6, 0, 0, 6, 6, 6, 6, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6,
-        0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 6, 6, 6, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 6, 6, 6,
-        0, 0, 0, 6, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0, 0, 6, 6, 6, 6, 0, 0, 0, 0, 6, 6,
-        0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 6, 6, 0, 6, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 6, 6, 6, 6, 6, 6,10, 0, 6, 0, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 6, 6,
+        0, 0, 0, 0, 0, 6, 6, 0, 0, 0, 6, 0, 6, 0, 0, 6, 0, 0, 0, 6, 6, 6, 6, 6, 6, 6,
+        0, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 6, 6, 6, 0, 0, 0, 0, 6, 6, 6, 6, 6,
+        0, 0, 0, 0, 6, 0, 6, 6, 6, 6, 6, 6, 0, 0, 0, 6, 6, 6, 0, 0, 6, 6, 6, 6, 6, 6,
+        0, 0, 6, 0, 6, 0, 6, 6, 6, 6, 6, 0, 0, 0, 6, 6, 6, 6, 0, 6, 6, 6, 6, 6, 6, 6,
+        0, 0, 0, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 6, 6, 6, 6, 0, 0, 6, 6, 0, 0, 6, 6, 6,
+        0, 0, 0, 6, 0, 0, 6, 6, 0, 0, 0, 6, 6, 6, 6, 0, 0, 0, 6, 6, 0, 0, 0, 0, 6, 6,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 0, 6, 0, 0, 6, 6, 6, 0, 6, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 0, 0, 0, 0, 0, 6, 6, 0, 6, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0,10, 0, 0, 0, 0, 0, 6, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0,
@@ -228,48 +214,38 @@ var the_outside_map = new Map({
         0, 9, 9, 9, 9, 9, 9, 9, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6,
         9, 9, 9, 9, 0, 9, 9, 9, 9, 9, 8, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 6, 6, 6, 
         
-        1 //outside square
         ]  ,
-    things: [ 
-        new Item ({
-            itemType: itemTypes.dagger,
-            x:1, 
-            y:0            
+    things: [
+        new Creature({
+            creatureType: creatureTypes.dog,
+            x: 13,
+            y: 2
         }), 
         new Creature({
-            creatureType: creatureTypes.rat,
-            x: 18,
-            y: 10
-        }),    
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 2,
-            y: 1
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 6,
-            y: 8
-        }),
-        new Creature({
-            creatureType: creatureTypes.rat,
-            x: 9,
-            y: 17
+            creatureType: creatureTypes.dog,
+            x: 15,
+            y: 14
         }),
         new Creature({
             creatureType: creatureTypes.cat,
-            x: 24,      
-            y: 18
+            x: 7,
+            y: 19
         }),
         new MapTeleport({ 
             x:10, y:21,
             targetmap: the_dungeon_map,
-            targetx: 1,
-            targety: 1,
+            targetx: 18,
+            targety: 14,
+        }), 
+        new MapTeleport({ 
+            x:10, y:0,
+            targetmap: hut1_map,
+            targetx: 4,
+            targety: 2,
         }),
         new MapTeleport({ 
             x:5, y:11,
-            targetmap: the_little_hut_map,
+            targetmap: hut2_map,
             targetx: 4,
             targety: 2,
         })
@@ -281,13 +257,20 @@ var the_outside_map = new Map({
 //additional teleporta
 
 the_dungeon_map.Add( new MapTeleport({ 
-            x:1, y:1,
+            x:18, y:14,
             targetmap: the_outside_map,
             targetx: 10,
             targety: 21,
 }));  
 
-the_little_hut_map.Add( new MapTeleport({ 
+hut1_map.Add( new MapTeleport({ 
+            x:4, y:2,
+            targetmap: the_outside_map,
+            targetx: 11,
+            targety: 0
+})); 
+
+hut2_map.Add( new MapTeleport({ 
             x:4, y:2,
             targetmap: the_outside_map,
             targetx: 5,
