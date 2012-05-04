@@ -146,7 +146,6 @@ rpggame
 			images\tree2.gif
 			images\t-shirt.png
 		+js
-			js\cards.js
 			js\data.js
 			js\language-enhancements.js
 			js\main.js
@@ -155,10 +154,50 @@ rpggame
 			js\rpg.js
 			js\types.js
 			js\ui.js
-			js\world.js
 		blarg.html
 		console.html
 		README
 [Open project files]
+0=js\cards.js
+1=js\data.js
+2=js\language-enhancements.js
+3=console.html
+4=js\player.js
+5=js\types.js
+6=js\map.js
+7=js\ui.js
+8=js\main.js
+9=js\rpg.js
 [Selected Project Files]
 Main=
+Selected=js\rpg.js
+[js\cards.js]
+TopLine=1
+Caret=1,1
+[js\data.js]
+TopLine=58
+Caret=32,104
+[js\language-enhancements.js]
+TopLine=139
+Caret=15,167
+[console.html]
+TopLine=77
+Caret=58,91
+[js\player.js]
+TopLine=67
+Caret=48,93
+[js\types.js]
+TopLine=134
+Caret=73,176
+[js\map.js]
+TopLine=70
+Caret=34,99
+[js\ui.js]
+TopLine=1
+Caret=16,23
+[js\main.js]
+TopLine=1
+Caret=18,7
+[js\rpg.js]
+TopLine=53
+Caret=13,71
