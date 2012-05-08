@@ -168,9 +168,10 @@ rpggame
 7=js\ui.js
 8=js\main.js
 9=js\rpg.js
+10=..\..\AppData\Local\Temp\PSpad\jan-karl.com\jankarl\welcome.html
 [Selected Project Files]
 Main=
-Selected=js\rpg.js
+Selected=..\..\AppData\Local\Temp\PSpad\jan-karl.com\jankarl\welcome.html
 [js\cards.js]
 TopLine=1
 Caret=1,1
@@ -201,3 +202,6 @@ Caret=18,7
 [js\rpg.js]
 TopLine=53
 Caret=13,71
+[..\..\AppData\Local\Temp\PSpad\jan-karl.com\jankarl\welcome.html]
+TopLine=1
+Caret=36,23
