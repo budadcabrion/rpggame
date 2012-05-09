@@ -8,7 +8,12 @@ function RpgMain() {
         });
     
         the_outside_map.Add(player);
-        //the_dungeon_map.Add(player);
+        
+        /*
+        window.player.x = 15;
+        window.player.y = 15;
+        the_dungeon_map.Add(player);
+          */
         //the_little_hut_map.Add(player);
         //player.weapon = new Item( {itemType: itemTypes.sword} );
         //player.armor = new Item( {itemType: itemTypes.armor.plate} );

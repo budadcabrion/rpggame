@@ -58,14 +58,14 @@ var the_dungeon_map = new Map({
         
         ] ,
     things: [ 
-    /*
+    
         //by the ladder 
         new Creature({ creatureType: creatureTypes.rat, x: 16, y: 14 }),   
         new Creature({ creatureType: creatureTypes.rat, x: 16, y: 15 }), 
         new Creature({ creatureType: creatureTypes.rat, x: 16, y: 16 }),
         new Creature({ creatureType: creatureTypes.rat, x: 17, y: 16 }),
         new Creature({ creatureType: creatureTypes.rat, x: 18, y: 16 }),
-         */
+         
         new Door( {x: 14, y:22, css: "door"}),
          
         //upper cavern

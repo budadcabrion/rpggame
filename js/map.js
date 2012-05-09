@@ -128,31 +128,11 @@ Map.prototype = {
 };  
 
 Map.prototype.AddVariations = function(mapdiv) {
-    divs = mapdiv.find(">div.randvar4");
     
-    //ideas
-    //this one i made for choosing out of a tileset - the html has a background 
-    //image that gets moved around to point at the different tiles
+    //color variations
+    colorvardivs = mapdiv.find(">div.colorvar");
     
-    /*
-    divs.each(function(){
-        div = $(this);
-        div.removeClass("randvar4");
-        x = parseInt(div.css("background-position-x").replace("px", ""));
-        y = parseInt(div.css("background-position-y").replace("px", ""));
-        
-                                             
-        imgx = x -(Math.randint(0,3) * 32) ;  
-        imgy = y - (Math.randint(0,3) * 32) ;
-        
-        div.css("background-position-x", imgx.toString() + "px"); 
-        div.css("background-position-y", imgy.toString() + "px");
-    });
-    */
-    
-    ///this one varies the colors in steps
-    
-    divs.each(function(){
+    colorvardivs.each(function(){
         var div = $(this);
         var color = new ColorFromRgb(div.css('background-color'));
         
@@ -166,6 +146,23 @@ Map.prototype.AddVariations = function(mapdiv) {
         color.b = Math.round(color.b * ratio);
                                 
         div.css('background-color', color.toString());
+    });
+    
+    //4x4 image variation
+    imagevardivs = mapdiv.find(">div.imagevar");
+    
+    imagevardivs.each(function(){
+        div = $(this);
+        div.removeClass("imagevar");
+        x = parseInt(div.css("background-position-x").replace("px", ""));
+        y = parseInt(div.css("background-position-y").replace("px", ""));
+        
+                                             
+        imgx = x -(Math.randint(0,3) * 32) ;  
+        imgy = y - (Math.randint(0,1) * 32) ;
+        
+        div.css("background-position-x", imgx.toString() + "px"); 
+        div.css("background-position-y", imgy.toString() + "px");
     });
     
 }

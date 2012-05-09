@@ -4,10 +4,10 @@ tilesets.dungeon = {
     css: "dungeon",
     tiles: [
         { solid: false },
-        { css: "dirt randvar4", solid: true },  
-        { css: "stone", solid: true },           
+        { css: "dirt colorvar", solid: true },  
+        { css: "stone imagevar", solid: true },           
         { css: "stonebricks", solid: true },
-        { css: "tunnel randvar4", solid: false } ,
+        { css: "tunnel colorvar", solid: false } ,
         { css: "tunnel ladder", solid: false },
     ]
 }; 
@@ -26,11 +26,11 @@ tilesets.outside = {
     tiles:[
         { solid: false },
         { solid: true },
-        { css: "grass randvar4", solid: false }, 
-        { css: "dirt randvar4", solid: false }, 
-        { css: "river randvar4", solid: true },
+        { css: "grass colorvar", solid: false }, 
+        { css: "dirt colorvar", solid: false }, 
+        { css: "river colorvar", solid: true },
         { css: "bridge", solid: false }, 
-        { css: "tree", solid: true },
+        { css: "tree imagevar", solid: true },
         null,
         { css: "castle", solid: false },
         { css: "boulder", solid :true },
