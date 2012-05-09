@@ -158,23 +158,18 @@ rpggame
 		console.html
 		README
 [Open project files]
-0=js\cards.js
-1=js\data.js
-2=js\language-enhancements.js
-3=console.html
-4=js\player.js
-5=js\types.js
-6=js\map.js
-7=js\ui.js
-8=js\main.js
-9=js\rpg.js
-10=..\..\AppData\Local\Temp\PSpad\jan-karl.com\jankarl\welcome.html
+0=js\data.js
+1=js\language-enhancements.js
+2=console.html
+3=js\player.js
+4=js\types.js
+5=js\map.js
+6=js\ui.js
+7=js\main.js
+8=js\rpg.js
 [Selected Project Files]
 Main=
-Selected=..\..\AppData\Local\Temp\PSpad\jan-karl.com\jankarl\welcome.html
-[js\cards.js]
-TopLine=1
-Caret=1,1
+Selected=console.html
 [js\data.js]
 TopLine=58
 Caret=32,104
@@ -182,8 +177,8 @@ Caret=32,104
 TopLine=139
 Caret=15,167
 [console.html]
-TopLine=77
-Caret=58,91
+TopLine=59
+Caret=65,71
 [js\player.js]
 TopLine=67
 Caret=48,93
@@ -202,6 +197,3 @@ Caret=18,7
 [js\rpg.js]
 TopLine=53
 Caret=13,71
-[..\..\AppData\Local\Temp\PSpad\jan-karl.com\jankarl\welcome.html]
-TopLine=1
-Caret=36,23

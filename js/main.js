@@ -4,7 +4,7 @@ function RpgMain() {
         window.player = new Player({
             creatureType: creatureTypes.dude,
             x: 1,
-            y: 1,        
+            y: 1,       
         });
     
         the_outside_map.Add(player);

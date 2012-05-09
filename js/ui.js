@@ -146,6 +146,7 @@ PlayerController.prototype.Play = function() {
             case 40: turn = this.RunCommand("move down"); event.preventDefault(); break;
             
             case 13: /* enter */ 
+            alert("enter");
                 turn = this.RunCommand(this.consoleview.GetCommand());   
                 this.consoleview.ClearCommand();
                 event.preventDefault();
@@ -153,27 +154,7 @@ PlayerController.prototype.Play = function() {
             case 8: /* backspace */ this.consoleview.BackSpace(); event.preventDefault(); return; break;
             
             default: return;
-        }
-        
-        if (turn)
-        {          
-            this.mapview.map.Turn();
-            
-            if (player.hitPoints <= 0)
-            {
-                return;
-            }
-            
-            if (mapview.map != player.map)
-            {       
-                this.mapview.map = player.map;  
-                this.mapview.Render(); 
-            }
-            
-            this.mapview.CenterOnTile(player.x, player.y);
-            this.playerview.Update();
-        }
-        
+        }       
         
     }, this) );         
 
@@ -183,6 +164,12 @@ PlayerController.prototype.Play = function() {
 }
 
 PlayerController.prototype.RunCommand = function(str) {
+    
+    if (player.hitPoints <= 0)
+    {
+        this.consoleview.Log(DANGER, "you cannot do anything.  you are dead.")
+        return;
+    }    
     
     this.consoleview.Log(INPUT, ">" + str);
 
@@ -238,8 +225,24 @@ PlayerController.prototype.RunCommand = function(str) {
             valid = true;
         }
     }
-    
-    if (valid){
+        
+    if (valid){ 
+        this.mapview.map.Turn();
+                    
+        if (player.hitPoints <= 0)
+        {
+            playerview.Update();
+            return;
+        }                    
+                    
+        if (mapview.map != player.map)
+        {       
+            this.mapview.map = player.map;  
+            this.mapview.Render(); 
+        }
+        
+        this.mapview.CenterOnTile(player.x, player.y);
+        this.playerview.Update();
         this.player.Update();
     }
     else {
