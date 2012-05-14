@@ -165,5 +165,15 @@ Map.prototype.AddVariations = function(mapdiv) {
         div.css("background-position-y", imgy.toString() + "px");
     });
     
+    //position variation for sprites
+    posvardivs = mapdiv.find(">div.posvar");
+    
+    posvardivs.each(function(){
+        div = $(this);
+        div.removeClass("posvar");
+        
+        div.x += Math.randint(-4, 4);
+        div.y += Math.randint(-4, 4);
+    });    
 }
 

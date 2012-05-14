@@ -7,8 +7,8 @@ tilesets.dungeon = {
         { css: "dirt colorvar", solid: true },  
         { css: "stone imagevar", solid: true },           
         { css: "stonebricks", solid: true },
-        { css: "tunnel colorvar", solid: false } ,
-        { css: "tunnel ladder", solid: false },
+        { css: "tunnel imagevar", solid: false } ,
+        { css: "ladder", solid: false },
     ]
 }; 
 
@@ -30,7 +30,7 @@ tilesets.outside = {
         { css: "dirt colorvar", solid: false }, 
         { css: "river colorvar", solid: true },
         { css: "bridge", solid: false }, 
-        { css: "tree imagevar", solid: true },
+        { css: "tree posvar", solid: true },
         null,
         { css: "castle", solid: false },
         { css: "boulder", solid :true },
