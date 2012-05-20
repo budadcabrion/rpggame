@@ -146,7 +146,6 @@ PlayerController.prototype.Play = function() {
             case 40: turn = this.RunCommand("move down"); event.preventDefault(); break;
             
             case 13: /* enter */ 
-            alert("enter");
                 turn = this.RunCommand(this.consoleview.GetCommand());   
                 this.consoleview.ClearCommand();
                 event.preventDefault();
