@@ -1,11 +1,15 @@
-function Map() {
-    copyProps(this, this.default);
-    copyProps(this, arguments[0]);
+function Map(obj) {
+    copyProps(this, Map.default);
+    copyProps(this, obj);
     this.mapdiv = null;
     
     for (var i in this.things)
     {
         this.things[i].map = this;
+    }
+
+    if (!this.tiles) {
+        this.tiles = Array.zeros(this.width * this.height);
     }
     
     return this;
@@ -16,7 +20,8 @@ Map.default = {
     height: 3,
     tiles: [0, 0, 0, 0, 1, 0, 0, 0, 0],
     gridSize: 32,
-    tileset: [ { css: "stone", solid: true }, { css: "tunnel", solid: false } ]
+    tileset: { css: "dungeon", tiles: [ { css: "stone imagevar", solid: true }, { css: "tunnel imagevar", solid: false } ] },
+    things: []
 };
 
 Map.prototype = {

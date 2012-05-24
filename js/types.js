@@ -1,5 +1,22 @@
 var tilesets = {};
 
+tilesets.default = {
+    css: "dungeon",
+    tiles: [
+        { css: "stone imagevar", solid: true },
+        { css: "tunnel imagevar", solid: false }
+    ]
+}
+
+tilesets.maze = {
+    css: "dungeon",
+    tiles: [ 
+        { css: "stone imagevar", solid: true },
+        { css: "tunnel imagevar", solid: false }
+    ]
+
+}
+
 tilesets.dungeon = {
     css: "dungeon",
     tiles: [

@@ -1,10 +1,8 @@
 <html>
 
 <head>
-    <script language="javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
-
-
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
     <script language="javascript" src="js/language-enhancements.js"></script>  
     <script language="javascript" src="js/rpg.js"></script>
     <script language="javascript" src="js/types.js"></script>
@@ -13,12 +11,12 @@
     <script language="javascript" src="js/data.js"></script>
     <script language="javascript" src="js/ui.js"></script>
     <script language="javascript" src="js/player.js"></script>
+    <script language="javascript" src="js/mapgen.js"></script>
     <script language="javascript" src="js/main.js"></script>
     
     <script>
-    
         
-        function resize()          {
+       function resize()          {
             var h = parseInt($(window).height());
             var w = parseInt($(window).width());
             var y = h - 180;
@@ -27,7 +25,6 @@
             $(".playerview").y = y;
             $(".console").y = y;
             $(".console").width( w - 310);
-            
         }
         
         $(document).ready(resize);
@@ -80,7 +77,7 @@
         
         .map {position:relative; }
         
-        .map .tile { width: 32.5px; height: 32.5px; position:absolute; background-repeat: no-repeat; }
+        .map .tile { width: 32px; height: 32px; position:absolute; background-repeat: no-repeat; }
         .map .mapThing {position:absolute; width: 32px; height: 32px;}
         
         
@@ -100,20 +97,17 @@
         .apple {background-image: url(images/apple.png); }
         .fist {background-image: url(images/fist.gif); }
         .key {background-image: url(images/silverkey.gif); }
-       
-        
-        /*.dungeon .tunnel {background-color: #a86;} */
+
         .dungeon .tunnel {background-image: url(images/morestones_light.png); }
-        
         .dungeon .dirt {background-color: #530;}
         .dungeon .stone {background-image: url(images/morestones.png); }  
         .dungeon .stonebricks {background-image: url(images/stonebricks.png); }
         .dungeon .door { background-image: url(images/door.png); }
-        
+
         .house .wall { background-image: url(images/bricks.png); }
         .house .floor { background-image: url(images/wood.png); }
         .house .door { background-image: url(images/door.png); }
-        
+
         .ladder {background-image: url(images/ladder.gif); }         
         .grass {background-color: #4c1; }
         .tree { background-image: url(images/bigtree.gif); margin-top: -16px; margin-left: -16px; width: 64px !important; height: 64px !important; }

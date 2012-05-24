@@ -183,3 +183,17 @@ ColorFromRgb.prototype.toString = function() {
     return "rgb(" + this.r + ","  + this.g + "," + this.b + ")";
 }
 
+
+Array.zeros = function (len) {
+    return Array.filled(len, 0)
+}
+
+Array.filled = function(len, val) {
+    var a, i;
+
+    a = new Array(len);
+    for (i = 0; i < len; ++i) {
+        a[i] = val;
+    }
+    return a;
+}

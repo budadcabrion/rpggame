@@ -7,7 +7,7 @@ function RpgMain() {
             y: 1,       
         });
     
-        the_outside_map.Add(player);
+        //the_outside_map.Add(player);
         
         /*
         window.player.x = 15;
@@ -26,6 +26,10 @@ function RpgMain() {
         player.x = 24;
         player.y = 20;
           */       
+
+        var map = mapgen1(125, 45);
+        map.Add(player);
+
         window.mapview = new MapView( { map: player.map, mapdiv: $(".map"), viewdiv: $(".mapview") } );
         window.playerview = new PlayerView( { player: player, div: $(".playerview") } );
         window.consoleview = new ConsoleView( { div:$(".console") } );
