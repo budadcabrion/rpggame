@@ -1,7 +1,6 @@
 function Map(obj) {
     copyProps(this, Map.default);
     copyProps(this, obj);
-    this.mapdiv = null;
     
     for (var i in this.things)
     {
@@ -21,12 +20,13 @@ Map.default = {
     tiles: [0, 0, 0, 0, 1, 0, 0, 0, 0],
     gridSize: 32,
     tileset: { css: "dungeon", tiles: [ { css: "stone imagevar", solid: true }, { css: "tunnel imagevar", solid: false } ] },
-    things: []
+    things: [],
+    mapdiv: null
 };
 
-Map.prototype = {
+Map.prototype.
 
-    Add: function (thing) {
+Map.prototype.Add = function (thing) {
         this.things.push(thing);
         thing.map = this;
         if (this.mapdiv)
@@ -35,7 +35,7 @@ Map.prototype = {
         }
     },
     
-    Remove: function(thing) {
+Map.prototype.Remove = function(thing) {
         for (var k in this.things) {
             if (this.things[k] == thing) {
                 this.things[k].div.remove();
@@ -45,7 +45,7 @@ Map.prototype = {
         }
     },
 
-    Render: function (mapdiv) {
+Map.prototype.Render = function (mapdiv) {
     
         this.mapdiv = mapdiv;
         
@@ -82,7 +82,7 @@ Map.prototype = {
         }
     },
     
-    Turn: function () {
+Map.prototype.Turn = function () {
         for (var x in this.things)
         {
             if (this.things[x].Turn)
@@ -92,13 +92,13 @@ Map.prototype = {
         }
     },
     
-    i: function(x, y) {
+Map.prototype.i = function(x, y) {
         if (x < 0 || x >= this.width || y < 0 || y >= this.height) 
             return -1;
         return y * this.width + x;
     },
     
-    IsSolid: function (x, y) {
+Map.prototype.IsSolid = function (x, y) {
         var i = this.i(x,y);
         
         if (i == -1) return true;
@@ -117,7 +117,7 @@ Map.prototype = {
         return false;
     },    
     
-    ThingsAt: function(x, y) {
+Map.prototype.ThingsAt = function(x, y) {
         var foundthings = [];
         
         for (var i in this.things)
