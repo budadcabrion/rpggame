@@ -7,6 +7,7 @@
     <script language="javascript" src="js/rpg.js"></script>
     <script language="javascript" src="js/types.js"></script>
     <script language="javascript" src="js/map.js"></script>
+    <script language="javascript" src="js/lightmap.js"></script>
     <script language="javascript" src="js/rpg.js"></script>
     <script language="javascript" src="js/data.js"></script>
     <script language="javascript" src="js/ui.js"></script>
@@ -75,7 +76,7 @@
         .console .input-container {height: 18px; font-weight:bold; font-size: 18px; width: 100%; border:0px; 
             background-color: #333; color: rgb(120, 200, 34); margin-top: 2px;}
         
-        .map {position:relative; }
+        .map {position:absolute; }
         
         .map .tile { width: 32px; height: 32px; position:absolute; background-repeat: no-repeat; }
         .map .mapThing {position:absolute; width: 32px; height: 32px;}
@@ -126,9 +127,13 @@
 
 <body>
     <div class="mapview">
-        <div class="map">
+        <div class="tilemap">
         
         </div>    
+        <div class="lightmap">
+        
+        </div> 
+           
     </div>
     
     <div class="playerview">

@@ -16,6 +16,11 @@ MapView.prototype.LookAt = function(x, y) {
         
     this.mapdiv.x = -x;
     this.mapdiv.y = -y;
+
+
+        this.lightmapdiv.x = -x;
+        this.lightmapdiv.y = -y;
+
 }
 
 MapView.prototype.CenterOnTile = function(x, y) {      
@@ -43,7 +48,9 @@ MapView.prototype.Render = function() {
     this.mapdiv.empty();
     this.mapdiv.x = 0;
     this.mapdiv.y = 0;
-    this.map.Render(this.mapdiv);  
+    this.map.Render(this.mapdiv); 
+    this.lightmap.Render(this.lightmapdiv);
+
 }
 
 function PlayerView(obj) {
@@ -243,6 +250,13 @@ PlayerController.prototype.RunCommand = function(str) {
         this.mapview.CenterOnTile(player.x, player.y);
         this.playerview.Update();
         this.player.Update();
+
+        if (this.mapview.lightmap) {
+            this.mapview.lightmap.AddLight(player.x, player.y, 1);
+            this.mapview.lightmap.CompileLights();
+            this.mapview.lightmap.lights.pop();
+            this.mapview.lightmap.Update();
+        }
     }
     else {
         this.consoleview.Log(DANGER, validation_message)

@@ -27,10 +27,30 @@ function RpgMain() {
         player.y = 20;
           */       
 
-        var map = mapgen1(125, 45);
+        var map = mapgen1(21, 21);
+
+        var lightmap = new Lightmap( {map:map} );
+
+        lightmap.AddLight(1, 1, 1.0);
+        lightmap.AddLight(7, 11, 1);
+        lightmap.AddLight(8, 11, 1);
+        lightmap.AddLight(9, 11, 1);
+        lightmap.AddLight(7, 12, 1);
+        lightmap.AddLight(8, 12, 1);
+        lightmap.AddLight(9, 12, 1);
+        lightmap.AddLight(7, 13, 1);
+        lightmap.AddLight(8, 13, 1);
+        lightmap.AddLight(9, 13, 1);
+        lightmap.AddLight(19, 19, 9.0);
+
+        lightmap.MakeLightsPermanent();
+
         map.Add(player);
 
-        window.mapview = new MapView( { map: player.map, mapdiv: $(".map"), viewdiv: $(".mapview") } );
+        window.mapview = new MapView( {
+            map: player.map, mapdiv: $(".tilemap"), 
+            lightmap: lightmap, lightmapdiv: $(".lightmap"),
+            viewdiv: $(".mapview") } );
         window.playerview = new PlayerView( { player: player, div: $(".playerview") } );
         window.consoleview = new ConsoleView( { div:$(".console") } );
         

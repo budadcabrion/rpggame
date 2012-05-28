@@ -24,6 +24,10 @@ function Player(obj) {
 Player.inherits(MapThing)
 Player.inherits(Creature);
 
+Player.prototype.Render = function(mapdiv) {
+    Creature.prototype.Render.call(this, mapdiv);
+}
+
 Player.prototype.Turn = function () {}
     
 Player.prototype.Hit = function(thing) {
