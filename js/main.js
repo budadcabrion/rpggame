@@ -33,13 +33,8 @@ function RpgMain() {
 
         lightmap.AddLight(1, 1, 1.0);
         lightmap.AddLight(7, 11, 1);
-        lightmap.AddLight(8, 11, 1);
         lightmap.AddLight(9, 11, 1);
-        lightmap.AddLight(7, 12, 1);
-        lightmap.AddLight(8, 12, 1);
-        lightmap.AddLight(9, 12, 1);
         lightmap.AddLight(7, 13, 1);
-        lightmap.AddLight(8, 13, 1);
         lightmap.AddLight(9, 13, 1);
         lightmap.AddLight(19, 19, 9.0);
 
